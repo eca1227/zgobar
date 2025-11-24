@@ -1,11 +1,15 @@
 package zgobar
 
-// 1.0
+// 1.2
 
 /*
 #cgo LDFLAGS: -lzbar
 #include <zbar.h>
 #include <stdlib.h>
+
+static unsigned long fourcc(char a, char b, char c, char d) {
+    return zbar_fourcc(a, b, c, d);
+}
 */
 import "C"
 import (
@@ -33,7 +37,7 @@ const (
 	Codabar    SymbolType = C.ZBAR_CODABAR
 	DataBar    SymbolType = C.ZBAR_DATABAR
 	DataBarExp SymbolType = C.ZBAR_DATABAR_EXP
-	Aztec      SymbolType = C.ZBAR_AZTEC
+	// Aztec      SymbolType = C.ZBAR_AZTEC
 )
 
 type BarcodeData struct {
